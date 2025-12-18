@@ -6,12 +6,23 @@ cardsPulled = []
 def drawcard():
     card = randint(1,54)
     if card in cardsPulled:
-        print("Same card, re-pulling")
         drawcard()  
     else:
         print (card) 
         cardsPulled.append(card)
+        cardsPulled.sort()
     
 drawcard()
 drawcard()
 print(cardsPulled)
+
+print("how many players?")
+players = input()
+
+playernum = 0
+player = 0
+playerdata = []
+
+for playernum in range (int(players)):
+    playerdata.append([])
+    print (playerdata)
