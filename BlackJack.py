@@ -24,5 +24,5 @@ player = 0
 playerdata = []
 
 for playernum in range (int(players)):
-    playerdata.append([])
+    playerdata.append({"playernum": playernum, "stand?": False})
     print (playerdata)
