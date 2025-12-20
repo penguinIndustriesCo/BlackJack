@@ -28,3 +28,10 @@ for playernum in range (int(players)):
     
 print (playerdata)
 
+for playernum in range (int(players)):
+    print('hit? player' + str(playernum + 1) + " (y/n)") 
+    hit = input()
+    if hit != "y":
+        playerdata[playernum]["stand?"] = True
+
+print (playerdata)
