@@ -8,7 +8,6 @@ def drawcard():
     if card in cardsPulled:
         return drawcard()  
     else:
-        print(card) 
         cardsPulled.append(card)
         cardsPulled.sort()
         return card
@@ -23,82 +22,143 @@ playerdata = []
 for playernum in range (int(players)):
     playerdata.append({"playernum": playernum, "stand?": False, "bust?": False, "cards": [], "total": 0})
     
-print (playerdata)
 
 for playernum in range (int(players)):
-    print("Player " + str(playernum + 1) + ": Get First 2 cards? (y/n)") 
+    print("Player " + str(playernum + 1) + ": Get First 2 cards? (y/N)") 
     hit = input()
     if hit == "y":
         for x in range(2):
             card = drawcard()
-            playerdata[playernum]["cards"].append(card)
             if 1 <= card <= 4:
                 playerdata[playernum]["total"] += 2
+                playerdata[playernum]["cards"].append("2")
+                print("2")
             elif 5 <= card <= 8:
                 playerdata[playernum]["total"] += 3
+                playerdata[playernum]["cards"].append("3")
+                print("3")
             elif 9 <= card <= 12:
                 playerdata[playernum]["total"] += 4
+                playerdata[playernum]["cards"].append("4")
+                print("4")
             elif 13 <= card <= 16:
                 playerdata[playernum]["total"] += 5
+                playerdata[playernum]["cards"].append("5")
+                print("5")
             elif 17 <= card <= 20:
                 playerdata[playernum]["total"] += 6
+                playerdata[playernum]["cards"].append("6")
+                print("6")
             elif 21 <= card <= 24:
                 playerdata[playernum]["total"] += 7
+                playerdata[playernum]["cards"].append("7")
+                print("7")
             elif 25 <= card <= 28:
                 playerdata[playernum]["total"] += 8
+                playerdata[playernum]["cards"].append("8")
+                print("8")
             elif 29 <= card <= 32:
                 playerdata[playernum]["total"] += 9
+                playerdata[playernum]["cards"].append("9")
+                print("9")
             elif 33 <= card <= 36:
                 playerdata[playernum]["total"] += 10
+                playerdata[playernum]["cards"].append("10")
+                print("10")
             elif 37 <= card <= 40:
                 playerdata[playernum]["total"] += 10
+                playerdata[playernum]["cards"].append("Jack")
+                print("Jack")
             elif 41 <= card <= 44:
                 playerdata[playernum]["total"] += 10
+                playerdata[playernum]["cards"].append("Queen")
+                print("Queen")
             elif 45 <= card <= 48:
                 playerdata[playernum]["total"] += 10
+                playerdata[playernum]["cards"].append("King")
+                print("King")
             elif 49 <= card <= 52:
                 playerdata[playernum]["total"] += 11
-        
-print(playerdata)
+                playerdata[playernum]["cards"].append("Ace")
+                print("Ace")
+    print("total: " + str(playerdata[playernum]["total"]))
+while playerdata[playernum]["stand?"] == False and playerdata[playernum]["bust?"] == False:
 
+    for playernum in range (int(players)):
+
+        if playerdata[playernum]["stand?"] == False:
+            print("Player " + str(playernum + 1) + ": Hit? Total: " + str(playerdata[playernum]["total"]) + " (y/N)") 
+            hit = input()
+            if hit != "y" or playerdata[playernum]["bust?"] == True:
+                playerdata[playernum]["stand?"] = True
+            else:
+                card = drawcard()
+                playerdata[playernum]["cards"].append(card)
+                if 1 <= card <= 4:
+                    playerdata[playernum]["total"] += 2
+                    playerdata[playernum]["cards"].append("2")
+                    print("2")
+                elif 5 <= card <= 8:
+                    playerdata[playernum]["total"] += 3
+                    playerdata[playernum]["cards"].append("3")
+                    print("3")
+                elif 9 <= card <= 12:
+                    playerdata[playernum]["total"] += 4
+                    playerdata[playernum]["cards"].append("4")
+                    print("4")
+                elif 13 <= card <= 16:
+                    playerdata[playernum]["total"] += 5
+                    playerdata[playernum]["cards"].append("5")
+                    print("5")
+                elif 17 <= card <= 20:
+                    playerdata[playernum]["total"] += 6
+                    playerdata[playernum]["cards"].append("6")
+                    print("6")
+                elif 21 <= card <= 24:
+                    playerdata[playernum]["total"] += 7
+                    playerdata[playernum]["cards"].append("7")
+                    print("7")
+                elif 25 <= card <= 28:
+                    playerdata[playernum]["total"] += 8
+                    playerdata[playernum]["cards"].append("8")
+                    print("8")
+                elif 29 <= card <= 32:
+                    playerdata[playernum]["total"] += 9
+                    playerdata[playernum]["cards"].append("9")
+                    print("9")
+                elif 33 <= card <= 36:
+                    playerdata[playernum]["total"] += 10
+                    playerdata[playernum]["cards"].append("10")
+                    print("10")
+                elif 37 <= card <= 40:
+                    playerdata[playernum]["total"] += 10
+                    playerdata[playernum]["cards"].append("Jack")
+                    print("Jack")
+                elif 41 <= card <= 44:
+                    playerdata[playernum]["total"] += 10
+                    playerdata[playernum]["cards"].append("Queen")
+                    print("Queen")
+                elif 45 <= card <= 48:
+                    playerdata[playernum]["total"] += 10
+                    playerdata[playernum]["cards"].append("King")
+                    print("King")
+                elif 49 <= card <= 52:
+                    playerdata[playernum]["total"] += 11
+                    playerdata[playernum]["cards"].append("Ace")
+                    print("Ace")
+                            
+                if playerdata[playernum]["total"] > 21:
+                    playerdata[playernum]["bust?"] = True
+                    print ("Bust!")  
+                elif playerdata[playernum]["total"] == 21:
+                    print("BlackJack!")
+
+winners = [0]
 for playernum in range (int(players)):
-
-    if playerdata[playernum]["stand?"] == False:
-        print("Player " + str(playernum + 1) + ": Hit? (y/n)") 
-        hit = input()
-        if hit != "y" or playerdata[playernum]["bust?"] == True:
-            playerdata[playernum]["stand?"] = True
-        else:
-            card = drawcard()
-            playerdata[playernum]["cards"].append(card)
-            if 1 <= card <= 4:
-                playerdata[playernum]["total"] += 2
-            elif 5 <= card <= 8:
-                playerdata[playernum]["total"] += 3
-            elif 9 <= card <= 12:
-                playerdata[playernum]["total"] += 4
-            elif 13 <= card <= 16:
-                playerdata[playernum]["total"] += 5
-            elif 17 <= card <= 20:
-                playerdata[playernum]["total"] += 6
-            elif 21 <= card <= 24:
-                playerdata[playernum]["total"] += 7
-            elif 25 <= card <= 28:
-                playerdata[playernum]["total"] += 8
-            elif 29 <= card <= 32:
-                playerdata[playernum]["total"] += 9
-            elif 33 <= card <= 36:
-                playerdata[playernum]["total"] += 10
-            elif 37 <= card <= 40:
-                playerdata[playernum]["total"] += 10
-            elif 41 <= card <= 44:
-                playerdata[playernum]["total"] += 10
-            elif 45 <= card <= 48:
-                playerdata[playernum]["total"] += 10
-            elif 49 <= card <= 52:
-                playerdata[playernum]["total"] += 11
-
-            if playerdata[playernum]["total"] > 21:
-              playerdata[playernum]["bust?"] = True  
-    print(playerdata[playernum]["total"])  
-
+    if playerdata[playernum]["total"] > winners[0] and playerdata[playernum]["bust?"] == False:
+        winners.pop(0)
+        winners.append(playernum + 1)
+    elif playerdata[playernum]["total"] == winners[0] and playerdata[playernum]["bust?"] == False:
+        winners.append(playernum + 1)
+    
+print("winner(s): " + str(winners))
